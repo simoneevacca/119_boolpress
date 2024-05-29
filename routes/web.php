@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
     
 
-        Route::resource('user', PostController::class);
+        Route::resource('posts', PostController::class);
         Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard'); //http://localhost:8000/admin
     });
 
