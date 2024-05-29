@@ -85,7 +85,7 @@ class PostController extends Controller
         }
 
         $post->update($validated);
-        return to_route('admin.posts.index');
+        return to_route('admin.posts.index')->with('message', "Post: $post->title has been updated");
         
     }
 
@@ -94,6 +94,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post->image) {
+            Storage::delete($post->image);
+        }
+
+        $post->delete();
+        return to_route('admin.posts.index')->with('message', "Post: $post->title deleted with success");
     }
 }
