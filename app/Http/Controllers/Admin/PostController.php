@@ -63,7 +63,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -71,7 +71,22 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $validated = $request->validated();
+
+        $slug = Str::slug($request->title, '-');
+        $validated['slug'] = $slug;
+
+        if($request->has('image')) {
+            if($post->image) {
+                Storage::delete($post->image);
+            }
+            $image_path = Storage::put('uploads', $validated['image']);
+            $validated['image'] = $image_path;
+        }
+
+        $post->update($validated);
+        return to_route('admin.posts.index');
+        
     }
 
     /**
