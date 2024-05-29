@@ -4,7 +4,8 @@
     <div class="container">
 
         <h1>All Posts</h1>
-        <a href="" class="btn btn-primary">Add new Post</a>
+        @include('admin.partials.confirm-message')
+        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-3">Add new Post</a>
 
 
         <div class="table-responsive">
