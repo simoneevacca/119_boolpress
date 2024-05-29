@@ -27,7 +27,7 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug }}</td>
                         <td class="w-25 text-center">
-                            <a class="btn btn-sm btn-dark" href="">view</a>
+                            <a class="btn btn-sm btn-dark" href="{{ route('admin.posts.show', $post) }}">view</a>
                             <a class="btn btn-sm btn-dark" href="">edit</a>
                             <a class="btn btn-sm btn-dark" href="">delete</a>
                         </td>
