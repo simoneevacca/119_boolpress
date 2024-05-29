@@ -16,6 +16,7 @@
                         <th scope="col">Image</th>
                         <th scope="col">Title</th>
                         <th scope="col">Slug</th>
+                        <th scope="col">Category</th>
                         <th class="w-25 text-center" scope="col">Action</th>
 
                     </tr>
@@ -33,6 +34,7 @@
                             </td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->slug }}</td>
+                            <td>{{ $post->category ? $post->category->name : 'null' }}</td>
                             <td class="w-25 text-center">
                                 <a class="btn btn-sm btn-dark" href="{{ route('admin.posts.show', $post) }}">view</a>
                                 <a class="btn btn-sm btn-dark" href="{{ route('admin.posts.edit', $post) }}">edit</a>
